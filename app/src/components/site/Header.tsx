@@ -1,7 +1,6 @@
 import { Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { TG_URL } from "@/data/works"
-import { asset } from "@/lib/asset"
 
 const nav = [
   ["Услуги", "#services"],
@@ -14,8 +13,7 @@ export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-zinc-200/70 bg-white/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-6 md:px-8">
-        <a href="#hero" className="flex items-center gap-2.5 font-geist text-lg font-semibold tracking-tighter" aria-label="DOLEPP, наверх">
-          <img src={asset("favicon.svg")} width={28} height={28} alt="" />
+        <a href="#hero" className="font-geist text-xl font-semibold tracking-tighter" aria-label="DOLEPP, наверх">
           DOLEPP
         </a>
         <nav className="ml-auto hidden items-center gap-1 md:flex" aria-label="Разделы">
