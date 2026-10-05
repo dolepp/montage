@@ -1,19 +1,24 @@
-# Сайт видеомонтажёра (@dolepp)
+# Сайт видеомонтажёра (DOLEPP, Telegram @dolepp)
 
-Статический сайт без сборки: `index.html`, `assets/styles.css`, `assets/app.js`, видео и обложки в `assets/`.
+React + TypeScript + Tailwind CSS 4 + shadcn-структура (`src/components/ui`). Hero-секция: компонент `hero-1` из 21st.dev.
+
+## Разработка
+```bash
+npm install
+npm run dev      # локально на http://localhost:5173
+npm run build    # сборка в docs/ (её и раздаёт GitHub Pages)
+```
 
 ## Публикация на GitHub Pages
-1. Репозиторий → Settings → Pages → Source: *Deploy from a branch* → `main` / `/ (root)` → Save.
-2. Сайт откроется на `https://<логин>.github.io/<репозиторий>/`.
+Settings → Pages → Source: *Deploy from a branch* → ветка `main`, папка **`/docs`** → Save.
+Перед коммитом выполнить `npm run build`, чтобы `docs/` был свежим.
 
 ## Свой домен (.ru / .com)
-1. Settings → Pages → Custom domain → ввести домен → Save (в репозитории появится файл `CNAME`).
-2. У регистратора домена добавить DNS-записи:
-   - apex-домен (`example.ru`): четыре записи `A` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `www`: запись `CNAME` → `<логин>.github.io`
-3. Когда DNS обновится (до нескольких часов), включить *Enforce HTTPS*.
+1. В `public/CNAME` записать домен одной строкой (например `example.ru`) и сделать `npm run build`.
+2. У регистратора: четыре записи `A` на `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`; для `www` запись `CNAME` на `<логин>.github.io`.
+3. Когда DNS обновится, включить *Enforce HTTPS* в Settings → Pages.
 
 ## Что править
-- Контакты: `index.html` (ссылки `t.me/dolepp`, `mailto:`) и константы `TG`, `MAIL` в `assets/app.js`.
-- Работы: карточки `<li class="work">` в `index.html`; видео — `assets/v/`, обложки — `assets/img/` (960×640).
-- Цены и политика правок: блок FAQ в `index.html`.
+- Контакты и FAQ: `src/data/works.ts`.
+- Работы: массив `works` в том же файле; видео `public/assets/v/NN.mp4`, обложки `public/assets/img/NN.jpg` (960×640).
+- Цвета и шрифты: `src/index.css` (токены shadcn, шрифт Geist + Golos Text для кириллицы).
