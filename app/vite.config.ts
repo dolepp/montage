@@ -8,5 +8,6 @@ export default defineConfig({
   base: "./",
   plugins: [react(), tailwindcss()],
   resolve: { alias: { "@": path.resolve(__dirname, "src") } },
-  build: { outDir: "docs", emptyOutDir: true },
+  // the built site goes to the repository root, which GitHub Pages serves
+  build: { outDir: "..", emptyOutDir: false },
 })
