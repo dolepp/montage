@@ -48,13 +48,13 @@ export function Showreel() {
         </div>
         <video
           ref={reel}
-          src={asset("assets/v/reel.mp4")}
-          poster={asset("assets/img/06.jpg")}
+          src={asset("assets/v/hero.mp4")}
+          poster={asset("assets/img/hero.jpg")}
           muted
           loop
           playsInline
           preload="metadata"
-          aria-label="Фрагменты работ: моушн-графика и субтитры"
+          aria-label="Интервью «Из Ханоя в Москву»: календарь, полароиды и субтитры"
           className="aspect-video w-full object-cover"
         />
       </div>
