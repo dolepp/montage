@@ -37,7 +37,7 @@ export function Showreel() {
   }, [])
 
   return (
-    <div className="relative mx-auto max-w-5xl pb-16 text-left">
+    <div className="relative mx-auto max-w-5xl pb-32 text-left">
       <div className="overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.45)] [transform:rotateX(8deg)] transition-transform duration-700 hover:[transform:rotateX(0deg)] motion-reduce:[transform:none]">
         <div className="flex items-center gap-2 border-b border-white/10 bg-zinc-900 px-4 py-2.5 font-mono text-[11px] tracking-wide text-zinc-400">
           <span className="h-2.5 w-2.5 rounded-full bg-red-500" />
@@ -59,7 +59,7 @@ export function Showreel() {
         />
       </div>
       {/* iPhone 16 (71.6 × 147.6 mm): aluminium frame, thin bezel, Dynamic Island, Action/volume buttons left, power + Camera Control right */}
-      <figure className="absolute -bottom-4 left-2 z-[60] w-[24%] max-w-[170px] [transform:rotate(-4deg)] sm:left-0 md:-left-8">
+      <figure className="absolute bottom-12 left-2 z-[60] w-[24%] max-w-[170px] [transform:rotate(-4deg)] sm:left-0 md:-left-8">
         <span aria-hidden className="absolute -left-[2px] top-[17%] h-[4%] w-[3px] rounded-l-sm bg-zinc-600" />
         <span aria-hidden className="absolute -left-[2px] top-[25%] h-[7.5%] w-[3px] rounded-l-sm bg-zinc-600" />
         <span aria-hidden className="absolute -left-[2px] top-[34.5%] h-[7.5%] w-[3px] rounded-l-sm bg-zinc-600" />
