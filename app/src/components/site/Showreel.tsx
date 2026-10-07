@@ -58,18 +58,32 @@ export function Showreel() {
           className="aspect-video w-full object-cover"
         />
       </div>
-      <figure className="absolute -bottom-2 left-2 z-[60] w-[26%] max-w-[180px] overflow-hidden rounded-2xl border-4 border-zinc-950 bg-zinc-950 shadow-2xl [transform:rotate(-4deg)] sm:left-0 md:-left-8">
-        <video
-          ref={phone}
-          src={asset("assets/v/phone.mp4")}
-          poster={asset("assets/img/17.jpg")}
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          aria-label="Пример вертикального Shorts"
-          className="aspect-[9/16] w-full object-cover"
-        />
+      {/* iPhone 16 (71.6 × 147.6 mm): aluminium frame, thin bezel, Dynamic Island, Action/volume buttons left, power + Camera Control right */}
+      <figure className="absolute -bottom-4 left-2 z-[60] w-[24%] max-w-[170px] [transform:rotate(-4deg)] sm:left-0 md:-left-8">
+        <span aria-hidden className="absolute -left-[2px] top-[17%] h-[4%] w-[3px] rounded-l-sm bg-zinc-600" />
+        <span aria-hidden className="absolute -left-[2px] top-[25%] h-[7.5%] w-[3px] rounded-l-sm bg-zinc-600" />
+        <span aria-hidden className="absolute -left-[2px] top-[34.5%] h-[7.5%] w-[3px] rounded-l-sm bg-zinc-600" />
+        <span aria-hidden className="absolute -right-[2px] top-[27%] h-[11%] w-[3px] rounded-r-sm bg-zinc-600" />
+        <span aria-hidden className="absolute -right-[1px] top-[55%] h-[6.5%] w-[2px] rounded-r-sm bg-zinc-500" />
+        <div className="relative aspect-[716/1476] w-full rounded-[15%/7.3%] bg-gradient-to-br from-zinc-500 via-zinc-800 to-zinc-600 p-[1.6%] shadow-2xl">
+          <div className="relative h-full w-full overflow-hidden rounded-[13.5%/6.6%] bg-black p-[3.2%]">
+            <div className="relative h-full w-full overflow-hidden rounded-[11.5%/5.4%] bg-zinc-950">
+              <video
+                ref={phone}
+                src={asset("assets/v/phone.mp4")}
+                poster={asset("assets/img/17.jpg")}
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Пример вертикального Shorts на iPhone"
+                className="h-full w-full object-cover"
+              />
+              <span aria-hidden className="absolute left-1/2 top-[1.6%] h-[4.2%] w-[33%] -translate-x-1/2 rounded-full bg-black" />
+              <span aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent" />
+            </div>
+          </div>
+        </div>
       </figure>
     </div>
   )
