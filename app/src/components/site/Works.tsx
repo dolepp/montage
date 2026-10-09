@@ -12,6 +12,7 @@ const tabs: { id: "all" | Category; label: string }[] = [
   { id: "int", label: "Интервью" },
   { id: "en", label: "English" },
   { id: "short", label: "Shorts" },
+  { id: "story", label: "Истории" },
 ]
 
 function WorkCard({ w, onOpen }: { w: Work; onOpen: (w: Work) => void }) {
