@@ -37,6 +37,7 @@ SRC = {
     "sip": (M / "clients/noname_sipinska/Sipinska_1min.mp4", (1280, 720), []),
     "neck": (M / "clients/@moroz475/готово/тренировка_шеи_вариант2_текст_сверху.mp4", (720, 1280), []),
     "asst": (M / "clients/@keevleva/готово/ассистент_10_специалистов.mp4", (720, 1280), []),
+    "ai01": (M / "clients/@tim_ostro/out/tim_test.mp4", (720, 1280), []),
 }
 
 
@@ -73,6 +74,9 @@ def wm_width(w: int, h: int) -> int:
 def encode(vid: str):
     src, (w, h), extra = SRC[vid]
     out = V / f"{vid}.mp4"
+    if not src.exists() and out.exists() and vid != "f02":
+        print(f"video {vid}: source archived, keeping the current web file")   # e.g. sip: project moved to Google Drive
+        return
     if vid == "f02" and not src.exists():
         (TMP / "f02_prev.mp4").write_bytes(out.read_bytes()) if not (TMP / "f02_prev.mp4").exists() else None
         src = TMP / "f02_prev.mp4"
