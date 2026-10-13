@@ -5,6 +5,7 @@ import { TG_URL } from "@/data/works"
 const nav = [
   ["Услуги", "#services"],
   ["Работы", "#works"],
+  ["Цены", "#pricing"],
   ["Процесс", "#process"],
   ["Вопросы", "#faq"],
 ] as const

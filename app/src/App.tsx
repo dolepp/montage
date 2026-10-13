@@ -4,6 +4,7 @@ import { Header } from "@/components/site/Header"
 import { Showreel } from "@/components/site/Showreel"
 import { Facts } from "@/components/site/Facts"
 import { Services } from "@/components/site/Services"
+import { Pricing } from "@/components/site/Pricing"
 import { Works } from "@/components/site/Works"
 import { Proof } from "@/components/site/Proof"
 import { Process } from "@/components/site/Process"
@@ -39,6 +40,7 @@ export default function App() {
         </Hero>
         <Facts />
         <Services onPick={setType} />
+        <Pricing onPick={setType} />
         <Works />
         <Proof />
         <Process />
