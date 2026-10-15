@@ -3,8 +3,8 @@ import { Reveal } from "./Reveal"
 import { SectionHead } from "./Section"
 
 const rates = [
-  { label: "Короткий формат", title: "Reels / Shorts / TikTok", price: "1 000", unit: "за ролик", desc: "Для соцсетей бизнеса, экспертов и агентств.", type: "Shorts / Reels / TikTok", featured: false },
-  { label: "От 20 минут", title: "Длинные видео", price: "5 000", unit: "за выпуск", desc: "YouTube, подкасты, интервью и регулярные выпуски.", type: "Длинный ролик (YouTube)", featured: true },
+  { label: "Короткий формат", title: "Reels / Shorts / TikTok", price: "1 000", unit: "за ролик", duration: "1–2 дня", desc: "Для соцсетей бизнеса, экспертов и агентств.", type: "Shorts / Reels / TikTok", featured: false },
+  { label: "От 20 минут", title: "Длинные видео", price: "5 000", unit: "за выпуск", duration: "2–5 дней", desc: "YouTube, подкасты, интервью и регулярные выпуски.", type: "Длинный ролик (YouTube)", featured: true },
 ]
 export function Pricing({ onPick }: { onPick: (type: string) => void }) {
   return (
@@ -22,6 +22,7 @@ export function Pricing({ onPick }: { onPick: (type: string) => void }) {
                 <span className={`text-sm ${rate.featured ? "text-zinc-400" : "text-zinc-500"}`}>{rate.unit}</span>
               </p>
               <p className={`mt-5 flex-1 ${rate.featured ? "text-zinc-300" : "text-zinc-600"}`}>{rate.desc}</p>
+              <p className={`mt-4 flex items-center gap-2 text-sm ${rate.featured ? "text-zinc-300" : "text-zinc-600"}`}><Clock3 className="h-4 w-4" aria-hidden="true" />Срок монтажа — {rate.duration}</p>
               <a href="#order" onClick={() => onPick(rate.type)} className={`mt-8 inline-flex w-fit items-center gap-2 rounded-xl px-5 py-3 font-medium transition-colors ${rate.featured ? "bg-[#FFD93D] text-zinc-950 hover:bg-yellow-300" : "bg-zinc-950 text-white hover:bg-zinc-800"}`}>
                 Обсудить проект <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
               </a>
@@ -30,7 +31,7 @@ export function Pricing({ onPick }: { onPick: (type: string) => void }) {
         ))}
       </div>
       <div className="mt-5 grid gap-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 md:grid-cols-2 md:p-8">
-        <div className="flex gap-3"><Clock3 className="mt-1 h-5 w-5 flex-none" aria-hidden="true" /><div><h3 className="font-semibold">Монтаж за 1–2 дня</h3><p className="mt-2 text-sm leading-relaxed text-zinc-600">При готовых материалах. Объём, сложность и точный срок согласуем перед стартом.</p></div></div>
+        <div className="flex gap-3"><Clock3 className="mt-1 h-5 w-5 flex-none" aria-hidden="true" /><div><h3 className="font-semibold">Сроки монтажа</h3><p className="mt-2 text-sm leading-relaxed text-zinc-600">Рилсы — 1–2 дня, длинные видео — 2–5 дней при готовых материалах. Точный срок согласуем перед стартом.</p></div></div>
         <div className="flex gap-3"><Check className="mt-1 h-5 w-5 flex-none" aria-hidden="true" /><div><h3 className="font-semibold">Правки включены</h3><p className="mt-2 text-sm leading-relaxed text-zinc-600">В рамках согласованного ТЗ довожу ролик до утверждённого результата. Один этап правок — обычно до 2 часов.</p></div></div>
       </div>
       <p className="mx-auto mt-5 max-w-2xl text-center text-sm leading-relaxed text-zinc-500">Итоговую стоимость фиксируем до начала работы. Время на обратную связь и согласование правок учитывается отдельно.</p>
