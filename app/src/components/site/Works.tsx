@@ -100,8 +100,9 @@ function Modal({ w, onClose }: { w: Work; onClose: () => void }) {
 export function Works() {
   const [filter, setFilter] = useState<"all" | Category>("short")
   const [open, setOpen] = useState<Work | null>(null)
-  const list = works.filter((w) => filter === "all" || w.cat === filter)
-  const count = (id: "all" | Category) => (id === "all" ? works.length : works.filter((w) => w.cat === id).length)
+  const visibleWorks = works.filter((w) => !w.hidden)
+  const list = visibleWorks.filter((w) => filter === "all" || w.cat === filter)
+  const count = (id: "all" | Category) => (id === "all" ? visibleWorks.length : visibleWorks.filter((w) => w.cat === id).length)
 
   return (
     <section id="works" className="scroll-mt-16 bg-zinc-950 px-6 py-24 text-white md:px-8 md:py-32">
