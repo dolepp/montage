@@ -4,7 +4,7 @@ import { SectionHead } from "./Section"
 
 const rates = [
   { label: "Короткий формат", title: "Reels / Shorts / TikTok", price: "1 000", unit: "за ролик", desc: "Для соцсетей бизнеса, экспертов и агентств.", type: "Shorts / Reels / TikTok", featured: false },
-  { label: "От 20 минут", title: "Длинные видео", price: "8 000", unit: "за выпуск", desc: "YouTube, подкасты, интервью и регулярные выпуски.", type: "Длинный ролик (YouTube)", featured: true },
+  { label: "От 20 минут", title: "Длинные видео", price: "5 000", unit: "за выпуск", desc: "YouTube, подкасты, интервью и регулярные выпуски.", type: "Длинный ролик (YouTube)", featured: true },
 ]
 export function Pricing({ onPick }: { onPick: (type: string) => void }) {
   return (
