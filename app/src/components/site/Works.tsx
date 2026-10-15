@@ -8,10 +8,10 @@ import { cn } from "@/lib/utils"
 import { SectionHead } from "./Section"
 
 const tabs: { id: "all" | Category; label: string }[] = [
+  { id: "short", label: "Рилсы / Shorts" },
   { id: "all", label: "Все" },
   { id: "int", label: "Интервью" },
   { id: "en", label: "English" },
-  { id: "short", label: "Shorts" },
   { id: "story", label: "Истории" },
   { id: "ai", label: "ИИ-видео" },
 ]
@@ -45,8 +45,8 @@ function WorkCard({ w, onOpen }: { w: Work; onOpen: (w: Work) => void }) {
         className="group block w-full overflow-hidden rounded-xl border border-white/10 bg-zinc-900 text-left transition-colors hover:border-white/30"
         aria-label={`Смотреть: ${w.title}, ${w.meta}`}
       >
-        <span className="relative block aspect-[3/2] overflow-hidden bg-black">
-          <img src={asset(`assets/img/${w.id}.jpg`)} width={960} height={640} loading="lazy" alt={w.alt} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <span className={cn("relative block overflow-hidden bg-black", w.vertical ? "aspect-[9/16]" : "aspect-[3/2]")}>
+          <img src={asset(`assets/img/${w.id}.jpg`)} width={w.vertical ? 720 : 960} height={w.vertical ? 1280 : 640} loading="lazy" alt={w.alt} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <video ref={video} muted loop playsInline preload="none" className={cn("absolute inset-0 h-full w-full object-cover transition-opacity duration-300", live ? "opacity-100" : "opacity-0")} />
           <span className="absolute bottom-3 right-3 grid h-11 w-11 place-items-center rounded-full bg-[#FFD93D] text-zinc-950 shadow-lg transition-transform group-hover:scale-110">
             <Play className="h-4 w-4 fill-current" />
@@ -98,15 +98,15 @@ function Modal({ w, onClose }: { w: Work; onClose: () => void }) {
 }
 
 export function Works() {
-  const [filter, setFilter] = useState<"all" | Category>("all")
+  const [filter, setFilter] = useState<"all" | Category>("short")
   const [open, setOpen] = useState<Work | null>(null)
   const list = works.filter((w) => filter === "all" || w.cat === filter)
   const count = (id: "all" | Category) => (id === "all" ? works.length : works.filter((w) => w.cat === id).length)
 
   return (
-    <section id="works" className="scroll-mt-0 bg-zinc-950 px-6 py-24 text-white md:px-8 md:py-32">
+    <section id="works" className="scroll-mt-16 bg-zinc-950 px-6 py-24 text-white md:px-8 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <SectionHead dark eyebrow="Работы" title="Выберите кадр" sub="Нажмите на работу, чтобы посмотреть её целиком. Это демонстрационные нарезки: показываю свой монтаж и графику." />
+        <SectionHead dark eyebrow="Каталог рилсов" title="Готовые ролики" sub="Откройте любой ролик, чтобы посмотреть его целиком. Сначала показаны вертикальные работы; остальные форматы доступны в фильтрах." />
         <Tabs.Root value={filter} onValueChange={(v) => setFilter(v as "all" | Category)}>
           <Tabs.List className="mb-10 flex flex-wrap justify-center gap-2" aria-label="Фильтр работ">
             {tabs.map((t) => (

@@ -39,7 +39,7 @@ function Group({ title, children }: { title: string; children: React.ReactNode }
 }
 
 export function Order({ type, setType }: { type: string; setType: (t: string) => void }) {
-  const [len, setLen] = useState(LENS[2])
+  const [len, setLen] = useState(LENS[0])
   const [when, setWhen] = useState(WHENS[1])
   const [have, setHave] = useState<string[]>([])
   const [note, setNote] = useState("")

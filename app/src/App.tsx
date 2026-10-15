@@ -16,32 +16,32 @@ import { StickyBar } from "@/components/site/StickyBar"
 import { TG_URL } from "@/data/works"
 
 export default function App() {
-  const [type, setType] = useState("Длинный ролик (YouTube)")
+  const [type, setType] = useState("Shorts / Reels / TikTok")
   return (
     <>
       <Header />
       <main>
         <Hero
-          eyebrow="Видеомонтаж · YouTube · Подкасты · Shorts"
-          eyebrowHref="#services"
+          eyebrow="Монтаж Reels · Shorts · видео для бизнеса"
+          eyebrowHref="#works"
           title={
             <>
-              Монтирую видео, которые{" "}
+              Монтирую рилсы, которые{" "}
               <span className="my-1 inline-block rounded-xl bg-[#FFD93D] px-3 pb-1.5 leading-[0.95] [-webkit-text-fill-color:#0a0a0a]">досматривают</span> до конца
             </>
           }
-          subtitle="Ролики для YouTube до 30 минут, нарезки подкастов и интервью, Shorts. Моушн-графика, субтитры на русском и английском, цвет и звук. Работаю по вашему ТЗ."
-          ctaLabel="Обсудить проект"
-          ctaHref={TG_URL}
-          secondaryLabel="Смотреть работы"
-          secondaryHref="#works"
+          subtitle="Короткие вертикальные ролики с плотным монтажом, субтитрами, графикой и чистым звуком. Откройте каталог и посмотрите готовые работы."
+          ctaLabel="Смотреть рилсы"
+          ctaHref="#works"
+          secondaryLabel="Обсудить проект"
+          secondaryHref={TG_URL}
         >
           <Showreel />
         </Hero>
+        <Works />
         <Facts />
         <Services onPick={setType} />
         <Pricing onPick={setType} />
-        <Works />
         <Proof />
         <Process />
         <Order type={type} setType={setType} />
