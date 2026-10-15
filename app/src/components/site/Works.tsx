@@ -108,6 +108,9 @@ export function Works() {
     <section id="works" className="scroll-mt-16 bg-zinc-950 px-6 py-24 text-white md:px-8 md:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionHead dark eyebrow="Каталог рилсов" title="Готовые ролики" sub="Откройте любой ролик, чтобы посмотреть его целиком. Сначала показаны вертикальные работы; остальные форматы доступны в фильтрах." />
+        <p className="mx-auto -mt-5 mb-8 max-w-2xl text-center text-sm leading-relaxed text-zinc-400">
+          Для быстрой загрузки сайта видео представлены в облегчённом качестве. Полные версии — на Google Диске.
+        </p>
         <Tabs.Root value={filter} onValueChange={(v) => setFilter(v as "all" | Category)}>
           <Tabs.List className="mb-10 flex flex-wrap justify-center gap-2" aria-label="Фильтр работ">
             {tabs.map((t) => (

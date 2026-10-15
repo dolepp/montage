@@ -22,7 +22,7 @@ export default function App() {
       <Header />
       <main>
         <Hero
-          eyebrow="Монтаж Reels · Shorts · видео для бизнеса"
+          eyebrow="Video editor · 02 years of experience"
           eyebrowHref="#works"
           title={
             <>
