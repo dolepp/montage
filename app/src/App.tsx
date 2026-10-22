@@ -5,6 +5,7 @@ import { Showreel } from "@/components/site/Showreel"
 import { Facts } from "@/components/site/Facts"
 import { Services } from "@/components/site/Services"
 import { Pricing } from "@/components/site/Pricing"
+import { Covers } from "@/components/site/Covers"
 import { Works } from "@/components/site/Works"
 import { Proof } from "@/components/site/Proof"
 import { Process } from "@/components/site/Process"
@@ -30,7 +31,7 @@ export default function App() {
               <span className="my-1 inline-block rounded-xl bg-[#FFD93D] px-3 pb-1.5 leading-[0.95] [-webkit-text-fill-color:#0a0a0a]">досматривают</span> до конца
             </>
           }
-          subtitle="Короткие вертикальные ролики с плотным монтажом, субтитрами, графикой и чистым звуком. Откройте каталог и посмотрите готовые работы."
+          subtitle="Нарезаю интервью и подкасты в рилсы: хук в первые секунды, субтитры по словам, графика на ключевых фразах и чистый звук."
           ctaLabel="Смотреть рилсы"
           ctaHref="#works"
           secondaryLabel="Обсудить проект"
@@ -38,6 +39,7 @@ export default function App() {
         >
           <Showreel />
         </Hero>
+        <Covers />
         <Works />
         <Facts />
         <Services onPick={setType} />

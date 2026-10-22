@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import { Reveal } from "./Reveal"
 import { SectionHead } from "./Section"
 
-const TYPES = ["Длинный ролик (YouTube)", "Нарезка интервью/подкаста", "Shorts / Reels / TikTok", "Другое"]
+const TYPES = ["Shorts / Reels / TikTok", "Нарезка интервью/подкаста", "Длинный ролик (YouTube)", "Другое"]
 const TYPE_LABEL: Record<string, string> = { "Длинный ролик (YouTube)": "Длинный ролик", "Нарезка интервью/подкаста": "Нарезка интервью", "Shorts / Reels / TikTok": "Shorts / Reels", "Другое": "Другое" }
 const LENS = ["до 1 минуты", "1–10 минут", "10–30 минут", "больше 30 минут"]
 const WHENS = ["срочно, 1–2 дня", "в течение недели", "не горит"]

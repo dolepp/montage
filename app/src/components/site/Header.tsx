@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button"
 import { TG_URL } from "@/data/works"
 
 const nav = [
-  ["Рилсы", "#works"],
+  ["Рилсы", "#covers"],
+  ["Все работы", "#works"],
   ["Услуги", "#services"],
   ["Цены", "#pricing"],
   ["Процесс", "#process"],

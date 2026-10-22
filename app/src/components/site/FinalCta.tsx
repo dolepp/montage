@@ -25,7 +25,7 @@ export function FinalCta() {
           />
           <div className="relative">
             <h2 className="mx-auto max-w-3xl text-balance bg-gradient-to-br from-white from-30% to-white/50 bg-clip-text text-4xl font-semibold leading-[1.05] tracking-tighter text-transparent md:text-6xl">
-              Расскажите о проекте. Предложу, как смонтировать
+              Пришлите интервью или подкаст. Предложу, какие рилсы из него нарезать
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-lg tracking-tight text-zinc-400">Пишите в Telegram или на почту. Отвечу, как сделаю, за сколько и к какому сроку.</p>
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
