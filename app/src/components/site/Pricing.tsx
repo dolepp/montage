@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal"
 import { SectionHead } from "./Section"
 
 const rates = [
-  { label: "Основной формат", title: "Reels / Shorts / TikTok", price: "1 000", unit: "за ролик", duration: "1–2 дня", desc: "Рилсы из интервью и подкастов для экспертов, бизнеса и агентств. Основной формат.", type: "Shorts / Reels / TikTok", featured: true },
+  { label: "Основной формат", title: "Reels / Shorts / TikTok", price: "1 000", unit: "за ролик", duration: "1–2 дня", desc: "Рилсы из интервью и подкастов для экспертов, бизнеса и агентств.", type: "Shorts / Reels / TikTok", featured: true },
   { label: "От 20 минут", title: "Длинные видео", price: "5 000", unit: "за выпуск", duration: "2–5 дней", desc: "YouTube, подкасты, интервью и регулярные выпуски.", type: "Длинный ролик (YouTube)", featured: false },
 ]
 export function Pricing({ onPick }: { onPick: (type: string) => void }) {
