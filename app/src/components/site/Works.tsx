@@ -2,19 +2,21 @@ import { useEffect, useRef, useState } from "react"
 import { Play, X, ArrowUpRight, HardDrive } from "lucide-react"
 import * as Tabs from "@radix-ui/react-tabs"
 import { Button } from "@/components/ui/button"
-import { DRIVE_URL, TG_URL, works, type Category, type Work } from "@/data/works"
+import { DRIVE_URL, SHOW_REELS, TG_URL, visibleWorks, type Category, type Work } from "@/data/works"
 import { asset } from "@/lib/asset"
 import { cn } from "@/lib/utils"
 import { SectionHead } from "./Section"
 
-const tabs: { id: "all" | Category; label: string }[] = [
-  { id: "short", label: "Рилсы / Shorts" },
-  { id: "all", label: "Все" },
-  { id: "int", label: "Интервью" },
-  { id: "en", label: "English" },
-  { id: "story", label: "Истории" },
-  { id: "ai", label: "ИИ-видео" },
-]
+const tabs: { id: "all" | Category; label: string }[] = SHOW_REELS
+  ? [
+      { id: "short", label: "Рилсы / Shorts" },
+      { id: "all", label: "Все" },
+      { id: "int", label: "Интервью" },
+      { id: "en", label: "English" },
+      { id: "story", label: "Истории" },
+      { id: "ai", label: "ИИ-видео" },
+    ]
+  : []
 
 function WorkCard({ w, onOpen }: { w: Work; onOpen: (w: Work) => void }) {
   const video = useRef<HTMLVideoElement>(null)
@@ -37,7 +39,7 @@ function WorkCard({ w, onOpen }: { w: Work; onOpen: (w: Work) => void }) {
   }
 
   return (
-    <li>
+    <li className={!SHOW_REELS && !w.vertical ? "sm:col-span-2 lg:col-span-3" : undefined}>
       <button
         onClick={() => onOpen(w)}
         onMouseEnter={enter}
@@ -45,7 +47,7 @@ function WorkCard({ w, onOpen }: { w: Work; onOpen: (w: Work) => void }) {
         className="group block w-full overflow-hidden rounded-xl border border-white/10 bg-zinc-900 text-left transition-colors hover:border-white/30"
         aria-label={`Смотреть: ${w.title}, ${w.meta}`}
       >
-        <span className={cn("relative block overflow-hidden bg-black", w.vertical ? "aspect-[9/16]" : "aspect-[3/2]")}>
+        <span className={cn("relative block overflow-hidden bg-black", w.vertical ? "aspect-[9/16]" : SHOW_REELS ? "aspect-[3/2]" : "aspect-[16/7]")}>
           <img src={asset(`assets/img/${w.id}.jpg`)} width={w.vertical ? 720 : 960} height={w.vertical ? 1280 : 640} loading="lazy" alt={w.alt} className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
           <video ref={video} muted loop playsInline preload="none" className={cn("absolute inset-0 h-full w-full object-cover transition-opacity duration-300", live ? "opacity-100" : "opacity-0")} />
           <span className="absolute bottom-3 right-3 grid h-11 w-11 place-items-center rounded-full bg-[#FFD93D] text-zinc-950 shadow-lg transition-transform group-hover:scale-110">
@@ -89,7 +91,7 @@ function Modal({ w, onClose }: { w: Work; onClose: () => void }) {
         <div className="flex items-center justify-between gap-3 bg-zinc-950 px-4 py-3 text-sm font-medium text-white">
           <b className="font-geist tracking-tight">{w.modalTitle}</b>
           <Button asChild size="sm" variant="accent" className="flex-none">
-            <a href={TG_URL} target="_blank" rel="noopener noreferrer">Заказать похожее</a>
+            <a href={TG_URL} target="_blank" rel="noopener noreferrer">Заказать такое же</a>
           </Button>
         </div>
       </div>
@@ -98,20 +100,21 @@ function Modal({ w, onClose }: { w: Work; onClose: () => void }) {
 }
 
 export function Works() {
-  const [filter, setFilter] = useState<"all" | Category>("short")
+  const [filter, setFilter] = useState<"all" | Category>(SHOW_REELS ? "short" : "all")
   const [open, setOpen] = useState<Work | null>(null)
-  const visibleWorks = works.filter((w) => !w.hidden)
-  const list = visibleWorks.filter((w) => filter === "all" || w.cat === filter)
+  const list = visibleWorks
+    .filter((w) => filter === "all" || w.cat === filter)
+    .sort((a, b) => (SHOW_REELS ? 0 : Number(!!b.vertical) - Number(!!a.vertical)))
   const count = (id: "all" | Category) => (id === "all" ? visibleWorks.length : visibleWorks.filter((w) => w.cat === id).length)
 
   return (
     <section id="works" className="scroll-mt-16 bg-zinc-950 px-6 py-24 text-white md:px-8 md:py-32">
       <div className="mx-auto max-w-6xl">
-        <SectionHead dark eyebrow="Каталог рилсов" title="Готовые ролики" sub="Откройте любой ролик, чтобы посмотреть его целиком. Сначала показаны вертикальные работы; остальные форматы доступны в фильтрах." />
+        <SectionHead dark eyebrow="Портфолио ИИ-видео" title="Готовые ролики" sub="Откройте любой ролик, чтобы посмотреть его целиком. Все сцены сгенерированы нейросетью, монтаж, подписи и музыка добавлены вручную." />
         <p className="mx-auto -mt-5 mb-8 max-w-2xl text-center text-sm leading-relaxed text-zinc-400">
-          Для быстрой загрузки сайта видео представлены в облегчённом качестве. Полные версии — на Google Диске.
+          Для быстрой загрузки сайта видео представлены в облегчённом качестве. Демонстрационные работы: бренды и персонажи вымышлены.
         </p>
-        <Tabs.Root value={filter} onValueChange={(v) => setFilter(v as "all" | Category)}>
+        {tabs.length > 0 && <Tabs.Root value={filter} onValueChange={(v) => setFilter(v as "all" | Category)}>
           <Tabs.List className="mb-10 flex flex-wrap justify-center gap-2" aria-label="Фильтр работ">
             {tabs.map((t) => (
               <Tabs.Trigger
@@ -123,21 +126,23 @@ export function Works() {
               </Tabs.Trigger>
             ))}
           </Tabs.List>
-        </Tabs.Root>
+        </Tabs.Root>}
         <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((w) => (
             <WorkCard key={w.id} w={w} onOpen={setOpen} />
           ))}
         </ul>
-        <div className="mt-14 flex justify-center">
-          <Button asChild variant="outline" size="lg" className="h-12 border-white/20 bg-transparent font-geist text-base tracking-tight text-white hover:bg-white hover:text-black">
-            <a href={DRIVE_URL} target="_blank" rel="noopener noreferrer">
-              <HardDrive className="mr-2 h-4 w-4" />
-              Полное портфолио: 30 работ на Google Диске
-              <ArrowUpRight className="ml-2 h-4 w-4" />
-            </a>
-          </Button>
-        </div>
+        {SHOW_REELS && (
+          <div className="mt-14 flex justify-center">
+            <Button asChild variant="outline" size="lg" className="h-12 border-white/20 bg-transparent font-geist text-base tracking-tight text-white hover:bg-white hover:text-black">
+              <a href={DRIVE_URL} target="_blank" rel="noopener noreferrer">
+                <HardDrive className="mr-2 h-4 w-4" />
+                Полное портфолио: 30 работ на Google Диске
+                <ArrowUpRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+          </div>
+        )}
       </div>
       {open && <Modal w={open} onClose={() => setOpen(null)} />}
     </section>

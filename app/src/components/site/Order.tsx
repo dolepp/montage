@@ -1,16 +1,18 @@
 import { useMemo, useState } from "react"
 import { Check, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { MAIL, TG_URL } from "@/data/works"
+import { MAIL, SHOW_REELS, TG_URL } from "@/data/works"
 import { cn } from "@/lib/utils"
 import { Reveal } from "./Reveal"
 import { SectionHead } from "./Section"
 
-const TYPES = ["Shorts / Reels / TikTok", "Нарезка интервью/подкаста", "Длинный ролик (YouTube)", "Другое"]
-const TYPE_LABEL: Record<string, string> = { "Длинный ролик (YouTube)": "Длинный ролик", "Нарезка интервью/подкаста": "Нарезка интервью", "Shorts / Reels / TikTok": "Shorts / Reels", "Другое": "Другое" }
-const LENS = ["до 1 минуты", "1–10 минут", "10–30 минут", "больше 30 минут"]
+const TYPES = SHOW_REELS
+  ? ["Рекламный ролик для товара", "Промо для соцсетей", "Говорящий персонаж / оживление фото", "Shorts / Reels / TikTok", "Нарезка интервью/подкаста", "Длинный ролик (YouTube)", "Другое"]
+  : ["Рекламный ролик для товара", "Промо для соцсетей", "Говорящий персонаж / оживление фото", "Другое"]
+const TYPE_LABEL: Record<string, string> = { "Рекламный ролик для товара": "Реклама товара / ЖК", "Промо для соцсетей": "Промо для соцсетей", "Говорящий персонаж / оживление фото": "Персонаж / оживление фото", "Длинный ролик (YouTube)": "Длинный ролик", "Нарезка интервью/подкаста": "Нарезка интервью", "Shorts / Reels / TikTok": "Shorts / Reels", "Другое": "Другое" }
+const LENS = SHOW_REELS ? ["до 1 минуты", "1–10 минут", "10–30 минут", "больше 30 минут"] : ["до 15 секунд", "15–30 секунд", "30–60 секунд", "несколько роликов"]
 const WHENS = ["срочно, 1–2 дня", "в течение недели", "не горит"]
-const HAVE = ["озвучка", "видеозапись", "фото", "музыка", "референс"]
+const HAVE = SHOW_REELS ? ["озвучка", "видеозапись", "фото", "музыка", "референс"] : ["фото товара", "логотип", "текст или сценарий", "музыка", "референс"]
 
 function Chip({ on, onClick, children, role = "radio" }: { on: boolean; onClick: () => void; children: string; role?: string }) {
   return (
@@ -48,7 +50,7 @@ export function Order({ type, setType }: { type: string; setType: (t: string) =>
   const text = useMemo(
     () =>
       [
-        "Здравствуйте! Хочу заказать монтаж.",
+        "Здравствуйте! Хочу заказать ИИ-видео.",
         `Что нужно: ${type}`,
         `Длительность: ${len}`,
         `Срок: ${when}`,
@@ -78,7 +80,7 @@ export function Order({ type, setType }: { type: string; setType: (t: string) =>
   }
 
   const toggle = (v: string) => setHave((h) => (h.includes(v) ? h.filter((x) => x !== v) : [...h, v]))
-  const mailto = `mailto:${MAIL}?subject=${encodeURIComponent("Заказ монтажа")}&body=${encodeURIComponent(text)}`
+  const mailto = `mailto:${MAIL}?subject=${encodeURIComponent("Заказ ИИ-видео")}&body=${encodeURIComponent(text)}`
 
   return (
     <section id="order" className="scroll-mt-20 border-y border-zinc-200 bg-zinc-50 px-6 py-24 md:px-8 md:py-32">
@@ -104,7 +106,7 @@ export function Order({ type, setType }: { type: string; setType: (t: string) =>
                 value={note}
                 onChange={(e) => setNote(e.target.value)}
                 rows={3}
-                placeholder="Например: «как в этом ролике…», нужны субтитры на английском"
+                placeholder="Например: «как в этом ролике…», нужен голос на русском, три формата"
                 className="w-full resize-y rounded-xl border border-zinc-200 bg-white p-4 text-base outline-none transition-colors placeholder:text-zinc-400 focus:border-zinc-950"
               />
             </label>

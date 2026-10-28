@@ -1,15 +1,15 @@
 import { Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { TG_URL } from "@/data/works"
+import { SHOW_REELS, TG_URL } from "@/data/works"
 
 const nav = [
-  ["Рилсы", "#covers"],
-  ["Все работы", "#works"],
+  ...(SHOW_REELS ? [["Рилсы", "#covers"]] : []),
+  ["Работы", "#works"],
   ["Услуги", "#services"],
   ["Цены", "#pricing"],
   ["Процесс", "#process"],
   ["Вопросы", "#faq"],
-] as const
+]
 
 export function Header() {
   return (

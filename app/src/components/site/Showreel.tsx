@@ -43,18 +43,18 @@ export function Showreel() {
           <span className="h-2.5 w-2.5 rounded-full bg-red-500" />
           <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
           <span className="h-2.5 w-2.5 rounded-full bg-green-500" />
-          <span className="ml-3 hidden sm:inline">A001_C014 · REVIEW COPY</span>
+          <span className="ml-3 hidden sm:inline">AI · 16:9 · REVIEW COPY</span>
           <span className="ml-auto">TC {time}</span>
         </div>
         <video
           ref={reel}
-          src={asset("assets/v/hero.mp4")}
-          poster={asset("assets/img/hero.jpg")}
+          src={asset("assets/v/ai-zhk.mp4")}
+          poster={asset("assets/img/ai-zhk.jpg")}
           muted
           loop
           playsInline
           preload="metadata"
-          aria-label="Интервью «Из Ханоя в Москву»: календарь, полароиды и субтитры"
+          aria-label="ИИ-ролик для жилого комплекса «Северный парк»"
           className="aspect-video w-full object-cover"
         />
       </div>
@@ -70,13 +70,13 @@ export function Showreel() {
             <div className="relative h-full w-full overflow-hidden rounded-[11.5%/5.4%] bg-zinc-950">
               <video
                 ref={phone}
-                src={asset("assets/v/phone.mp4")}
-                poster={asset("assets/img/17.jpg")}
+                src={asset("assets/v/ai-aura.mp4")}
+                poster={asset("assets/img/ai-aura.jpg")}
                 muted
                 loop
                 playsInline
                 preload="metadata"
-                aria-label="Пример вертикального Shorts на iPhone"
+                aria-label="ИИ-ролик для товара в вертикальном формате на iPhone"
                 className="h-full w-full object-cover"
               />
               <span aria-hidden className="absolute left-1/2 top-[1.6%] h-[4.2%] w-[33%] -translate-x-1/2 rounded-full bg-black" />

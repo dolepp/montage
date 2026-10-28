@@ -2,9 +2,9 @@ import { Quote } from "lucide-react"
 import { Reveal } from "./Reveal"
 
 const nums = [
-  ["1–2 дня", "на рилс из интервью или подкаста при готовой записи"],
-  ["RU / EN", "монтирую и субтитрирую на русском и английском"],
-  ["28 мин", "самый длинный ролик: фото и футажи, цвет, переходы, титры, музыка"],
+  ["8 сек", "один сгенерированный кадр-сцена, из них собираю ролик на 15–30 секунд"],
+  ["RU", "речь персонажа и озвучка на русском с синхронизацией губ"],
+  ["4 формата", "9:16, 4:5, 1:1 и 16:9 из одного ролика"],
 ]
 
 export function Proof() {
@@ -15,13 +15,12 @@ export function Proof() {
           <figure className="relative h-full overflow-hidden rounded-2xl border border-zinc-200 bg-gradient-to-br from-white to-zinc-100 p-8 md:p-12">
             <Quote className="h-10 w-10 text-zinc-300" />
             <blockquote className="mt-6 text-balance font-geist text-3xl font-semibold leading-tight tracking-tighter md:text-4xl">
-              «Мне нравится. Получилось{" "}
-              <mark className="rounded-md bg-[#FFD93D] px-1.5 text-zinc-950">разнообразно</mark>, не скучно и отличный баланс».
+              Ролик для ЖК, товара или кофейни — <mark className="rounded-md bg-[#FFD93D] px-1.5 text-zinc-950">без студии, актёров и съёмочного дня</mark>.
             </blockquote>
             <figcaption className="mt-8 text-sm text-gray-600">
-              <span className="font-medium text-zinc-950">Заказчик, YouTube-канал в нише true crime</span>
+              <span className="font-medium text-zinc-950">Нейросеть делает кадры, я собираю из них рекламу</span>
               <br />
-              После первой работы заказал следующую
+              Сценарий, подписи, музыка и форматы под вашу площадку
             </figcaption>
           </figure>
         </Reveal>
