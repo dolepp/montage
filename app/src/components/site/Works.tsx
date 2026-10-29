@@ -39,7 +39,7 @@ function WorkCard({ w, onOpen }: { w: Work; onOpen: (w: Work) => void }) {
   }
 
   return (
-    <li className={!SHOW_REELS && !w.vertical ? "sm:col-span-2 lg:col-span-3" : undefined}>
+    <li className={SHOW_REELS ? undefined : w.vertical ? "w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc((100%-2.5rem)/3)]" : "w-full"}>
       <button
         onClick={() => onOpen(w)}
         onMouseEnter={enter}
@@ -127,7 +127,7 @@ export function Works() {
             ))}
           </Tabs.List>
         </Tabs.Root>}
-        <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className={SHOW_REELS ? "grid gap-5 sm:grid-cols-2 lg:grid-cols-3" : "flex flex-wrap justify-center gap-5"}>
           {list.map((w) => (
             <WorkCard key={w.id} w={w} onOpen={setOpen} />
           ))}
